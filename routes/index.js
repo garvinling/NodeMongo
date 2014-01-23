@@ -23,3 +23,49 @@ exports.userlist = function(db){
 		});
 	};
 };
+
+exports.newuser = function(req,res){
+
+	res.render('newuser',{title:'Add New User'});
+
+
+};
+
+
+
+exports.adduser = function(db){
+
+	return function(req,res){
+
+		//Get form values.  These rely on name attributes. 
+		var userName = req.body.username;
+		var userEmail = req.body.useremail;
+
+		//Set collection
+		var collection = db.get('usercollection');
+
+		//Submit to the DB
+		collection.insert({
+
+			"username":userName,
+			"email":userEmail
+		}, 
+
+		function(err,doc){
+
+
+			if(err)
+			{
+				res.send("There was a problem with the DB");
+			}
+			else
+			{
+				res.location("userlist");	//Set so it doesnt say /adduser
+				res.redirect("userlist");	//Forward to success page
+			}
+	});
+  }
+}
+
+
+

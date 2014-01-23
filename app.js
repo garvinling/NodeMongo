@@ -44,6 +44,10 @@ if ('development' == app.get('env')) {
 app.get('/users', user.list);
 app.get('/userlist',routes.userlist(db));
 
+//handle creating a new user: write to the dB
+app.get('/newuser',routes.newuser);
+app.post('/adduser',routes.adduser(db));
+
 
 
 
