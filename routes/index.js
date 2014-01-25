@@ -4,7 +4,9 @@
  */
 
 exports.index = function(req, res){
+
   res.render('index', { title: 'Express' });
+
 };
 
 exports.userlist = function(db){
@@ -19,18 +21,35 @@ exports.userlist = function(db){
 				"userlist" : docs
 
 			});
-
 		});
 	};
 };
 
 exports.newuser = function(req,res){
 
+
 	res.render('newuser',{title:'Add New User'});
 
 
 };
 
+exports.login = function(req,res){
+
+	res.render('login',{title:'New Login'});
+
+
+};
+
+exports.auth = function(){
+
+	return function(req,res){
+
+	console.log("LOGGIN IN");
+
+	res.redirect('userlist');
+
+	};
+};
 
 
 exports.adduser = function(db){
@@ -65,7 +84,31 @@ exports.adduser = function(db){
 			}
 	});
   }
-}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
