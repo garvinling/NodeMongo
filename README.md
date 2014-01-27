@@ -1,4 +1,4 @@
-NodeLogin
+NodeMongo
 =========
 
-A simple nodeJS login module 
+A simple nodeJS module for reading/writing to mongoDB using monk. 
